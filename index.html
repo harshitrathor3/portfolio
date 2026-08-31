@@ -23,7 +23,8 @@
       <li><a href="#about"><span>01.</span>About</a></li>
       <li><a href="#experience"><span>02.</span>Experience</a></li>
       <li><a href="#work"><span>03.</span>Work</a></li>
-      <li><a href="#contact"><span>04.</span>Contact</a></li>
+      <li><a href="#games"><span>04.</span>Game</a></li>
+      <li><a href="#contact"><span>05.</span>Contact</a></li>
     </ul>
     <a href="https://drive.google.com/file/d/1Hq6ZouIrVji_GooEheLllPzGnDtX38zh/view" target="_blank" rel="noreferrer" class="resume-btn">Resume</a>
   </nav>
@@ -176,8 +177,39 @@
     </article>
   </section>
 
+  <section id="games" class="reveal">
+    <h2 class="section-heading"><span class="num">04.</span> Othello AI (try it out!)<span class="rule"></span></h2>
+    <div class="game-container">
+      <div class="game-info-top">
+        <p id="gameStatus" class="status-text"><span class="status-dot"></span>Your turn</p>
+      </div>
+      
+      <div class="game-wrapper">
+        <div class="game-board" id="gameBoard"></div>
+      </div>
+
+      <div class="game-footer">
+        <div class="score-display">
+          <span>White (You): <span id="whiteScore">2</span></span>
+          <span>Blue (AI): <span id="blueScore">2</span></span>
+        </div>
+        <div class="game-controls">
+          <button class="reset-btn" id="resetBtn">Reset</button>
+          <div class="difficulty-control">
+            <label for="difficultySelect">Difficulty:</label>
+            <select id="difficultySelect">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="reveal">
-    <p class="eyebrow">04. What's Next?</p>
+    <p class="eyebrow">05. What's Next?</p>
     <h2 class="big">Get In Touch</h2>
     <p>I'm eager to contribute to technically challenging environments where I can apply my experience, learn from strong engineers, and build performant, resilient systems. Whether you have a question, a project idea, or want to discuss backend engineering, feel free to reach out.</p>
     <a href="mailto:harshit.rathore.dev@gmail.com" class="cta">Say Hello</a>
