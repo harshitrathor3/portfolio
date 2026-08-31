@@ -213,17 +213,40 @@
   .section-heading .num { font-family: var(--font-mono); color: var(--green); font-size: 1rem; font-weight: 400; }
   .section-heading .rule { height: 1px; background: var(--lightest-navy); flex: 1; margin-left: 6px; }
 
-  #about .about-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+  #about .about-content {
+    display: flex;
     gap: 40px;
-    align-items: start;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  #about .about-text {
+    flex: 1;
   }
   #about p { margin-bottom: 16px; font-size: 1rem; }
+  .about-image {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    border: 2px solid var(--green);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+  }
+  .about-image:hover {
+    opacity: 1;
+  }
+  .tech-intro {
+    font-family: var(--font-mono);
+    color: var(--light-slate);
+    font-size: 0.85rem;
+    margin: 24px 0 12px;
+  }
   .stack-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    gap: 10px 14px;
+    grid-template-columns: repeat(2, auto);
+    gap: 5px 50px;
+    width: fit-content;
     list-style: none;
     font-family: var(--font-mono);
     font-size: 0.85rem;
@@ -294,7 +317,8 @@
     header.top-nav { padding: 0 20px; }
     nav.main-nav ul { display: none; }
     .resume-btn { display: none; }
-    .about-grid { grid-template-columns: 1fr !important; }
+    .about-content { flex-direction: column; }
+    .about-image { width: 240px; height: 240px; }
     .job-list { flex-direction: column; }
     .job-tabs {
       flex-direction: row; border-left: none; border-bottom: 2px solid var(--lightest-navy); overflow-x: auto;
