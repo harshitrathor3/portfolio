@@ -276,16 +276,77 @@
   .job-panel li::before { content: '▹'; position: absolute; left: 0; color: var(--green); }
 
   .project {
-    background: var(--light-navy); border-radius: 4px; padding: 28px 30px; margin-bottom: 22px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    text-align: justify;
+    position: relative;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 44px 0;
+    border-top: 1px solid var(--lightest-navy);
+    transition: border-color 0.25s ease;
   }
-  .project:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -12px rgba(2,12,27,0.6); }
-  .project-top { display: flex; justify-content: space-between; align-items: flex-start; }
-  .project-top svg { width: 20px; height: 20px; color: var(--light-slate); flex-shrink: 0; }
-  .project h3 { color: var(--lightest-slate); font-size: 1.15rem; margin: 6px 0 12px; }
-  .project p { font-size: 0.92rem; max-width: 500px; }
-  .project .tech { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 16px; list-style: none; font-family: var(--font-mono); font-size: 0.75rem; color: var(--light-slate); }
+  .project:hover { border-top-color: rgba(100, 255, 218, 0.4); }
+
+  .project-rail { display: flex; flex-direction: column; gap: 28px; }
+
+  .project-index {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--slate);
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
+  }
+  .project:hover .project-index { color: var(--green); }
+
+  .project-metric {
+    padding-left: 14px;
+    border-left: 2px solid var(--lightest-navy);
+    transition: border-color 0.25s ease;
+  }
+  .project:hover .project-metric { border-left-color: var(--green); }
+  .project-metric-value { color: var(--lightest-slate); font-size: 1.5rem; font-weight: 600; line-height: 1.1; }
+  .project-metric-label { color: var(--slate); font-size: 0.82rem; margin-top: 4px; line-height: 1.4; }
+
+  .project-tech { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .project-tech li { font-family: var(--font-mono); font-size: 0.78rem; color: var(--slate); }
+
+  .project-main { min-width: 0; }
+
+  .project-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
+  .project-title-row h3 { color: var(--lightest-slate); font-size: 1.3rem; font-weight: 700; margin: 0; }
+  .project-title-row h4 {
+    color: var(--slate);
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    margin: 0;
+  }
+  .project-title-row a { color: var(--slate); display: flex; align-items: center; transition: transform 0.25s ease, color 0.25s ease; }
+  .project-title-group { display: flex; flex-direction: column; gap: 4px; }
+  .project:hover .project-title-row a { color: var(--green); transform: translate(3px, -3px); }
+  .project-title-row svg { width: 18px; height: 18px; }
+
+  .thread { position: relative; padding-left: 26px; }
+  .thread::before { content: ''; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 1px; background: var(--lightest-navy); }
+
+  .stage { position: relative; padding-bottom: 26px; }
+  .stage:last-child { padding-bottom: 0; }
+  .stage::before {
+    content: ''; position: absolute; left: -26px; top: 5px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--slate);
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .project:hover .stage::before { border-color: var(--green); }
+
+  .stage-label { color: var(--light-slate); font-size: 0.95rem; font-weight: 600; margin: 0 0 8px 0; }
+  .stage p { color: var(--slate); font-size: 0.93rem; line-height: 1.65; margin: 0; }
+  .stage ul { margin: 0; padding: 0; list-style: none; }
+  .stage li { color: var(--slate); font-size: 0.93rem; line-height: 1.6; padding-left: 16px; position: relative; margin-bottom: 6px; }
+  .stage li::before { content: '–'; position: absolute; left: 0; color: var(--slate); }
+  .stage li:last-child { margin-bottom: 0; }
+
+  .stage.impact .stage-label { color: var(--green); }
+  .stage.impact::before { background: var(--green); border-color: var(--green); }
 
   #contact { text-align: center; max-width: 560px; margin: 0 auto 100px; }
   #contact .section-heading { justify-content: center; }
@@ -554,4 +615,12 @@
     }
     .job-tabs button { border-left: none; border-bottom: 2px solid transparent; margin-left: 0; margin-bottom: -2px; }
     .job-tabs button.active { border-left: none; border-bottom: 2px solid var(--green); }
+  }
+
+  @media (max-width: 680px) {
+    .project { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; }
+    .project-rail { flex-direction: row; flex-wrap: wrap; gap: 24px 32px; }
+    .project-metric { padding-left: 0; border-left: none; padding-top: 10px; border-top: 2px solid var(--lightest-navy); }
+    .project:hover .project-metric { border-top-color: var(--green); border-left-color: var(--lightest-navy); }
+    .project-tech { flex-direction: row; flex-wrap: wrap; gap: 10px 16px; }
   }
