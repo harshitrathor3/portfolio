@@ -176,6 +176,7 @@
     margin-top: 24px;
     max-width: 540px;
     font-size: 1.1rem;
+    text-align: justify;
   }
   .hero p b { color: var(--lightest-slate); font-weight: 600; }
   .hero .cta {
@@ -221,6 +222,7 @@
   }
   #about .about-text {
     flex: 1;
+    text-align: justify;
   }
   #about p { margin-bottom: 16px; font-size: 1rem; }
   .about-image {
@@ -244,7 +246,7 @@
   }
   .stack-list {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
     gap: 5px 50px;
     width: fit-content;
     list-style: none;
@@ -270,12 +272,13 @@
   .job-panel h3 span { color: var(--green); }
   .job-panel .job-time { font-family: var(--font-mono); font-size: 0.78rem; color: var(--slate); margin: 4px 0 18px; }
   .job-panel ul { list-style: none; }
-  .job-panel li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; }
+  .job-panel li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; text-align: justify;}
   .job-panel li::before { content: '▹'; position: absolute; left: 0; color: var(--green); }
 
   .project {
     background: var(--light-navy); border-radius: 4px; padding: 28px 30px; margin-bottom: 22px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: justify;
   }
   .project:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -12px rgba(2,12,27,0.6); }
   .project-top { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -289,7 +292,40 @@
   #contact .num { }
   #contact .eyebrow { font-family: var(--font-mono); color: var(--green); font-size: 0.95rem; margin-bottom: 16px; }
   #contact h2.big { font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--lightest-slate); margin-bottom: 20px; }
-  #contact p { margin-bottom: 40px; }
+  #contact > p { margin-bottom: 32px; }
+  
+  .contact-info { 
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .contact-info p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--light-slate);
+    line-height: 1.4;
+  }
+  
+  .contact-info strong {
+    color: var(--lightest-slate);
+    font-weight: 600;
+    margin-right: 8px;
+  }
+  
+  .contact-info a {
+    color: var(--green);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    word-break: break-all;
+  }
+  
+  .contact-info a:hover {
+    color: var(--white);
+    text-decoration: underline;
+  }
+  
   #contact .cta { display: inline-block; padding: 16px 28px; border: 1px solid var(--green); color: var(--green); font-family: var(--font-mono); font-size: 0.85rem; border-radius: 4px; transition: background 0.2s ease, transform 0.2s ease; }
   #contact .cta:hover { background: rgba(100, 255, 218, 0.08); transform: translateY(-3px); }
 

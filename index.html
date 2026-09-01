@@ -22,7 +22,7 @@
     <ul>
       <li><a href="#about"><span>01.</span>About</a></li>
       <li><a href="#experience"><span>02.</span>Experience</a></li>
-      <li><a href="#work"><span>03.</span>Work</a></li>
+      <li><a href="#work"><span>03.</span>Projects</a></li>
       <li><a href="#games"><span>04.</span>Game</a></li>
       <li><a href="#contact"><span>05.</span>Contact</a></li>
     </ul>
@@ -65,7 +65,8 @@
   <p class="eyebrow">Hi, my name is</p>
   <h1>Harshit Rathore.</h1>
   <h2>I build scalable backend systems.</h2>
-  <p>I'm a backend engineer specializing in building scalable microservices, distributed systems, and AI-enabled platforms. Currently, I'm a Backend Engineer at <b class="eyebrow">Techolution</b>.</p>
+  <!-- <p>I'm a Backend Engineer specializing in scalable microservices, distributed systems, and AI-enabled platforms. I've shipped systems handling 10,000+ scheduled jobs, cut production latency by up to 80%, and built AI agents that save 100+ business users hours of manual work every week. Currently building at <b class="eyebrow">Techolution</b>.</p> -->
+  <p>I'm a backend engineer specializing in building scalable microservices, distributed systems, and AI-enabled platforms. Currently, building at <b class="eyebrow">Techolution</b>.</p>
   <a href="https://drive.google.com/file/d/1Hq6ZouIrVji_GooEheLllPzGnDtX38zh/view" target="_blank" rel="noreferrer" class="cta">Download Resume</a>
 </section>
 
@@ -74,15 +75,16 @@
     <h2 class="section-heading"><span class="num">01.</span> About<span class="rule"></span></h2>
     <div class="about-content">
       <div class="about-text">
-        <p>I'm a backend engineer passionate about building reliable, scalable, and maintainable software systems. My expertise spans backend engineering, distributed systems, microservices architecture, and cloud infrastructure. I love solving complex engineering problems and measuring the impact of improvements.</p>
-        <p>I've architected and built several production systems at Techolution, including AI-enabled platforms, distributed schedulers, event-driven notification systems, and real-time delivery pipelines. I approach engineering from both a system-design and implementation perspective.</p>
-        <p>Outside of work, I solve coding challenges on LeetCode (400+ problems solved) and stay updated with the latest trends in technology.</p>
+        <p>I'm a Software Engineer who cares about building systems that are reliable under real production load — not just systems that work in a demo. My expertise spans backend engineering, distributed systems, microservices architecture, and cloud infrastructure on GCP.</p>
+        <p>At Techolution, I've architected and shipped production systems end-to-end: an AI-enabled code modernization platform, a fault-tolerant distributed scheduler processing 10,000+ jobs, an event-driven notification pipeline, and an agent-based text-to-SQL system used by 100+ business users. I've also debugged and fixed hard production issues — including a MongoDB connection leak that was silently doubling API latency.</p>
+        <p>I think in terms of measurable impact: latency reduced, throughput doubled, time-to-market cut by weeks. <br> Outside of work, I've solved 400+ problems on LeetCode (Contest Rating 1639, top 22% globally) and stay sharp on data structures, algorithms, and system design.</p>
       </div>
       <img src="./img.JPG" alt="Harshit Rathore" class="about-image">
     </div>
     <p class="tech-intro">Here are a few technologies I've been working with recently:</p>
     <ul class="stack-list">
       <li>Python</li>
+      <li>Java</li>
       <li>FastAPI</li>
       <li>Flask</li>
       <li>PostgreSQL</li>
@@ -110,19 +112,22 @@
           <h3>Backend Engineer <span>@ Techolution</span></h3>
           <p class="job-time">July 2024 — Present</p>
           <ul>
-            <li>Architected and led backend development for StackMod, an AI-enabled code modernization platform, cutting manual refactoring effort by 40%.</li>
-            <li>Redesigned notification delivery pipeline from DB polling to event-driven Redis Pub/Sub + SSE, reducing latency by 50% and DB load by 80%.</li>
-            <li>Designed and developed a fault-tolerant distributed Scheduler Microservice powering 10,000+ scheduled jobs with exactly-once execution using Redis locking.</li>
-            <li>Built modular Notification Microservice accelerating time-to-market for 4+ product teams by one month each.</li>
+            <li>Architected and led backend development for StackMod, an AI-enabled code modernization platform, cutting manual refactoring effort by 40%; built an automated validation pipeline generating and running unit tests against legacy vs. modernized code, lifting AI task accuracy by 35%.</li>
+            <li>Redesigned the notification delivery pipeline from DB polling to event-driven Redis Pub/Sub + SSE, cutting latency by 50% and DB load by 80% — including a dedicated SSE gateway with per-user connection queues for real-time delivery across multi-pod GCP infrastructure.</li>
+            <li>Designed and built a fault-tolerant distributed Scheduler Microservice adopted by 10+ product teams, powering 10,000+ scheduled jobs with exactly-once execution guaranteed via Redis NX locking.</li>
+            <li>Built an agent-based text-to-SQL system on Gemini Flash Lite, automating query generation, execution, and AI-backed response synthesis — cutting manual reporting effort by 80% for a 100+ person business team.</li>
+            <li>Engineered Role-Based Access Control (RBAC) with audit trail logging for a clinical trials platform, enabling granular access across multiple user roles and strengthening regulatory compliance.</li>
+            <li>Diagnosed a MongoDB connection leak causing 60+ second API hangs by tracing 800+ dangling connections — cutting CRUD API latency by 60% and doubling peak throughput.</li>
+            <li>Built a modular Notification Microservice with a plug-and-play architecture (Slack, Outlook, and more), accelerating time-to-market for 4+ product teams by ~1 month each.</li>
           </ul>
         </div>
         <div class="job-panel" data-panel="1">
           <h3>Backend Engineer Intern <span>@ Techolution</span></h3>
           <p class="job-time">Nov 2023 — June 2024</p>
           <ul>
-            <li>Led refactoring initiative improving development speed by 80% and built automated PR Reviewer tool reducing production bugs by 50%.</li>
-            <li>Engineered automated validation pipeline generating and running unit tests against legacy vs. modernized code.</li>
-            <li>Built RAG-based systems and contributed to backend infrastructure improvements.</li>
+            <li>Led a refactoring initiative that improved development speed by 80%.</li>
+            <li>Built "PR Reviewer" — an automated code-review tool that reduced production bugs by 50%.</li>
+            <li>Built RAG-based systems and contributed to core backend infrastructure improvements.</li>
           </ul>
         </div>
         <div class="job-panel" data-panel="2">
@@ -145,7 +150,7 @@
         <h3>Crackers E-Commerce Backend</h3>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3h7v7M21 3l-9 9M5 5h5v0H5v14h14v-5"/></svg>
       </div>
-      <p>Production e-commerce backend API for bakery/snacks business supporting inventory management, order processing, and dynamic pricing. Integrated Cloudinary for image uploads, implemented tiered bulk discount system, and API analytics for customer behavior tracking.</p>
+      <p>Production e-commerce backend API powering a bakery/snacks business — inventory management, order processing, and dynamic pricing. Built a tiered bulk-discount engine, integrated Cloudinary for image uploads, and added API analytics for customer behavior tracking.</p>
       <ul class="tech"><li>Python</li><li>FastAPI</li><li>Cloudinary</li><li>API Analytics</li><li>CORS</li></ul>
     </article>
 
@@ -163,7 +168,7 @@
         <h3>Mango AI - Conversational AI Platform</h3>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3h7v7M21 3l-9 9M5 5h5v0H5v14h14v-5"/></svg>
       </div>
-      <p>Full-stack conversational AI application with Dart mobile frontend and Python backend. Developed QNA engine and TTM Friend API for intelligent customer interaction. Built scalable backend with microservices-oriented architecture supporting real-time conversations and AI-driven responses.</p>
+      <p>Full-stack conversational AI app with a Dart mobile frontend and a Python microservices backend. Built the QNA engine and TTM Friend API powering real-time, AI-driven customer conversations at scale.</p>
       <ul class="tech"><li>Python</li><li>Dart</li><li>FastAPI</li><li>AI/ML</li><li>Docker</li></ul>
     </article>
 
@@ -172,7 +177,7 @@
         <h3>Contactly - Contact Management System</h3>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3h7v7M21 3l-9 9M5 5h5v0H5v14h14v-5"/></svg>
       </div>
-      <p>Full-featured contact management application with secure authentication system. Implemented user login/signup, contact groups organization, and contact CRUD operations. Built efficient database schema with proper indexing for fast contact retrieval and group management at scale.</p>
+      <p>Full-featured contact management app with secure authentication (login/signup), contact groups, and full CRUD operations. Designed an indexed database schema for fast contact retrieval and group management at scale.</p>
       <ul class="tech"><li>Python</li><li>Flask</li><li>Authentication</li><li>Database Design</li><li>Groups Management</li></ul>
     </article>
   </section>
@@ -211,7 +216,13 @@
   <section id="contact" class="reveal">
     <p class="eyebrow">05. What's Next?</p>
     <h2 class="big">Get In Touch</h2>
-    <p>I'm eager to contribute to technically challenging environments where I can apply my experience, learn from strong engineers, and build performant, resilient systems. Whether you have a question, a project idea, or want to discuss backend engineering, feel free to reach out.</p>
+    <p>I'm looking to join a technically challenging, product-driven team where I can own real impact — from system design through production. Whether you have a question, a new opportunity, or just want to talk backend engineering, I'd love to hear from you.</p>
+    <div class="contact-info">
+      <p>
+        <strong>Email:</strong> <a href="mailto:harshit.rathore.dev@gmail.com">harshit.rathore.dev@gmail.com</a> <br>
+        <strong>Mobile:</strong> <a href="tel:+919926546160">+91 99265 46160</a>
+      </p>
+    </div>
     <a href="mailto:harshit.rathore.dev@gmail.com" class="cta">Say Hello</a>
   </section>
 
@@ -228,7 +239,9 @@
 <!-- improve project description -->
 <!-- add more details for 1st exp description, add all from resume -->
 <!-- for mobile there is no left side quick link pannel -->
- <!-- there is no nav bar for mobile view -->
+<!-- there is no nav bar for mobile view -->
+<!-- typing like and sound for I am backend developer -->
+<!-- loading of sections like original website -->
 
 
 
