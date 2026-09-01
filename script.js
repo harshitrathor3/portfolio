@@ -1,3 +1,141 @@
+// ========== TYPEWRITER EFFECT ==========
+// Configuration: Adjust these values to customize the typing effect
+const TYPING_CONFIG = {
+  typingSpeed: 100, // milliseconds per character (lower = faster)
+  delayBeforeStart: 500, // milliseconds before typing starts
+  soundEnabled: true // set to false to disable typing sounds
+};
+
+// Initialize audio context once
+let audioContext = null;
+let typewriterStarted = false;
+let lastKeystrokeTime = 0; // NEW: tracks timing between keystrokes for volume ducking
+
+function initAudioContext() {
+  if (!audioContext) {
+    try {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (e) {
+      console.log('Audio context not available');
+    }
+  }
+}
+
+// Create typewriter-like sound using Web Audio API
+function playTypingSound() {
+  if (!TYPING_CONFIG.soundEnabled || !audioContext) return;
+
+  try {
+    const now = audioContext.currentTime;
+
+    // ---- Volume ducking based on keystroke rate ----
+    const currentTime = performance.now();
+    const timeSinceLastKeystroke = currentTime - lastKeystrokeTime;
+    lastKeystrokeTime = currentTime;
+
+    // If keystrokes are close together (fast typing), reduce volume.
+    // Below 60ms apart = heavily ducked, above 150ms apart = full volume.
+    const duckFloor = 0.5; // minimum volume multiplier during rapid bursts
+    const duckThresholdFast = 60;   // ms
+    const duckThresholdSlow = 150;  // ms
+    let duckFactor = 1;
+
+    if (timeSinceLastKeystroke < duckThresholdSlow) {
+      const t = Math.max(0, (timeSinceLastKeystroke - duckThresholdFast) /
+                             (duckThresholdSlow - duckThresholdFast));
+      duckFactor = duckFloor + t * (1 - duckFloor);
+    }
+
+    // ---- Layer 1: sharp mechanical "click" (key strike) ----
+    const clickDuration = 0.03;
+    const clickBufferSize = audioContext.sampleRate * clickDuration;
+    const clickBuffer = audioContext.createBuffer(1, clickBufferSize, audioContext.sampleRate);
+    const clickData = clickBuffer.getChannelData(0);
+
+    for (let i = 0; i < clickBufferSize; i++) {
+      clickData[i] = (Math.random() * 2 - 1) * (1 - i / clickBufferSize);
+    }
+
+    const clickSource = audioContext.createBufferSource();
+    clickSource.buffer = clickBuffer;
+
+    const clickFilter = audioContext.createBiquadFilter();
+    clickFilter.type = 'bandpass';
+    clickFilter.frequency.setValueAtTime(3000 + Math.random() * 1500, now);
+    clickFilter.Q.value = 4;
+
+    const clickGain = audioContext.createGain();
+    clickGain.gain.setValueAtTime(0.25 * duckFactor, now); // ducked
+    clickGain.gain.exponentialRampToValueAtTime(0.001, now + clickDuration);
+
+    clickSource.connect(clickFilter);
+    clickFilter.connect(clickGain);
+    clickGain.connect(audioContext.destination);
+    clickSource.start(now);
+    clickSource.stop(now + clickDuration);
+
+    // ---- Layer 2: low "thunk" (mechanical body/lever resonance) ----
+    const thunkOsc = audioContext.createOscillator();
+    thunkOsc.type = 'triangle';
+    thunkOsc.frequency.setValueAtTime(140 + Math.random() * 40, now);
+    thunkOsc.frequency.exponentialRampToValueAtTime(70, now + 0.05);
+
+    const thunkGain = audioContext.createGain();
+    thunkGain.gain.setValueAtTime(0.08 * duckFactor, now); // ducked
+    thunkGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+    thunkOsc.connect(thunkGain);
+    thunkGain.connect(audioContext.destination);
+    thunkOsc.start(now);
+    thunkOsc.stop(now + 0.06);
+
+  } catch (e) {
+    // Silently continue
+  }
+}
+
+// Typewriter effect function
+function startTypewriterEffect() {
+  // Prevent running multiple times
+  if (typewriterStarted) return;
+  typewriterStarted = true;
+  
+  const typingContent = document.getElementById('typing-content');
+  const typingCursor = document.getElementById('typing-cursor');
+  const fullText = 'I build scalable backend systems.';
+  let charIndex = 0;
+  
+  if (!typingContent) return; // Element not found
+  
+  // Initialize audio context on first interaction
+  initAudioContext();
+  
+  // Start typing after initial delay
+  setTimeout(() => {
+    const typeInterval = setInterval(() => {
+      if (charIndex < fullText.length) {
+        typingContent.textContent += fullText[charIndex];
+        playTypingSound();
+        charIndex++;
+      } else {
+        // Typing complete, stop cursor blinking
+        clearInterval(typeInterval);
+        typingCursor.classList.remove('typing');
+      }
+    }, TYPING_CONFIG.typingSpeed);
+    
+    // Add typing class to cursor for faster blink while typing
+    typingCursor.classList.add('typing');
+  }, TYPING_CONFIG.delayBeforeStart);
+}
+
+// Start typing effect when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startTypewriterEffect);
+} else {
+  startTypewriterEffect();
+}
+
 const revealEls = document.querySelectorAll('.reveal');
   revealEls.forEach((el, i) => setTimeout(() => el.classList.add('in'), i * 120));
 
